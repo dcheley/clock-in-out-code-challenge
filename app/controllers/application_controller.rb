@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :require_login
+  before_action :authorize
 
   private
   def current_user
@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   # To allow usage within /views templates
   helper_method :current_user
 
-  def require_login
+  def authorize
     unless current_user
       redirect_to login_url, notice: "Login required"
     end

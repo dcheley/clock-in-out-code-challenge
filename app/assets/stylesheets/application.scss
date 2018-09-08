@@ -1,1 +1,20 @@
 @import "bootstrap";
+
+.header {
+  text-align: center;
+}
+
+.alert {
+  text-align: center;
+  font-size: 16px;
+  color: darkblue;
+}
+
+.field {
+  margin-top: 5px;
+}
+
+.btn.btn-primary {
+  width: 100%;
+  margin-top: 15px;
+}
