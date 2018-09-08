@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ClockInOutCodeChallenge</title>
+    <title>Work Attendance App</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="en">
   </head>
 
   <body>
-    <%= yield %>
+    <ul class="nav">
+      <% if !current_user %>
+        <li class="nav-item"><%= link_to "Login", login_url, class:"link" %></li>
+        <li class="nav-item"><%= link_to "Signup", new_user_url, class:"link" %></li>
+      <% else %>
+        <li class="nav-item"><%= link_to "Logout", logout_url, class:"link" %></li>
+      <% end %>
+    </ul>
+    <% if flash[:alert] || flash[:notice] %>
+       <div class="alert"><%= flash[:alert] || flash[:notice] %></div>
+     <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

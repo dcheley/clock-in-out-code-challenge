@@ -1,0 +1,15 @@
+<h5 class="header">Login</h5>
+
+<%= form_for(:session, url: login_url) do |f| %>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, required: true, placeholder: "example@email.ca" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, required: true, placeholder: "Enter password here..." %>
+  </div>
+
+  <%= submit_tag "submit", class: "submit" %>
+<% end %>
