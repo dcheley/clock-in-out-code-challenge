@@ -1,6 +1,6 @@
 class AttendancesController < ApplicationController
   before_action :load_attendance_data only: [:update, :destroy]
-
+  # Only admins can view index, edit and destroy..
   def create
     @attendance = Attendance.new(attendance_params)
     @user = @attendance.user
@@ -38,7 +38,7 @@ class AttendancesController < ApplicationController
   def index
     @attendances = Attendance.all.order("created_at DESC")
   end
-  
+
   private
   def load_attendance_data
     @attendance = Attendance.find(params[:id])
@@ -46,6 +46,6 @@ class AttendancesController < ApplicationController
   end
 
   def attendance_params
-    params.require(:attendance).permit(:start_time, :end_time, :user_id)
+    params.require(:attendance).permit(:time, :status, :user_id)
   end
 end

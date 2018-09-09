@@ -13,14 +13,20 @@
   <% end %>
 
   <div class="field">
+    <!-- Make this current time and add hidden field -->
     <%= f.label :start_time %>
+    <!-- Separate time from calendar -->
     <%= f.datetime_field :start_time, class: "form-control", required: true %>
   </div>
 
+  <!-- Make clockout button on current time and add hidden field -->
   <div class="field">
-    <%= f.label :start_time %>
-    <%= f.datetime_field :start_time, class: "form-control" %>
+    <%= f.label :end_time %>
+    <!-- Separate time from calendar -->
+    <%= f.datetime_field :end_time, class: "form-control" %>
   </div>
 
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
+
+<!-- Display user's attendance here -->
