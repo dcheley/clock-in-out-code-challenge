@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :load_attendance_data only: [:update, :destroy]
+  before_action :load_attendance_data, only: [:update, :destroy]
   # Only admins can view index, edit and destroy..
   def create
     @attendance = Attendance.new(attendance_params)
@@ -9,7 +9,7 @@ class AttendancesController < ApplicationController
         format.html { redirect_to user_url(@user), notice: "Time successfully logged" }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render user_url(@user) }
+        format.html { render "users/show" }
         format.json { render json: @attendance.errors, status: :unprocessable_entity }
       end
     end
@@ -21,7 +21,7 @@ class AttendancesController < ApplicationController
         format.html { redirect_to user_url(@user), notice: "Attendance updated" }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render user_url(@user) }
+        format.html { render "users/index" }
         format.json { render json: @attendance.errors, status: :unprocessable_entity }
       end
     end
@@ -30,7 +30,7 @@ class AttendancesController < ApplicationController
   def destroy
     respond_to do |format|
       @attendance.destroy
-      format.html { redirect_to user_url(@user), notice: "Attendance data deleted" }
+      format.html { redirect_to users_url, notice: "Attendance data deleted" }
       format.json { render json: @user, status: :created, location: @user }
     end
   end
@@ -46,6 +46,6 @@ class AttendancesController < ApplicationController
   end
 
   def attendance_params
-    params.require(:attendance).permit(:time, :status, :user_id)
+    params.require(:attendance).permit(:status, :user_id)
   end
 end

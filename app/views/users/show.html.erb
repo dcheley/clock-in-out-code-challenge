@@ -12,21 +12,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <!-- Make this current time and add hidden field -->
-    <%= f.label :start_time %>
-    <!-- Separate time from calendar -->
-    <%= f.datetime_field :start_time, class: "form-control", required: true %>
-  </div>
+  <!-- Put live clock here -->
 
-  <!-- Make clockout button on current time and add hidden field -->
-  <div class="field">
-    <%= f.label :end_time %>
-    <!-- Separate time from calendar -->
-    <%= f.datetime_field :end_time, class: "form-control" %>
-  </div>
+  <!-- Display clock in OR clock out button based on user's last time -->
+  <% if @user.attendances.empty? || @user.attendances.last.created_at.today? %>
+    <%= f.hidden_field :status, value: 1 %>
+    <%= f.submit "Clock In", class: "btn btn-primary" %>
+  <% else %>
+    <%= f.hidden_field :status, value: 2 %>
+    <%= f.submit "Clock Out", class: "btn btn-danger" %>
+  <% end %>
+  <%= f.hidden_field :user_id, value: @user.id %>
 
-  <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 
 <!-- Display user's attendance here -->
