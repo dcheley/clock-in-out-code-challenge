@@ -18,6 +18,8 @@ class UsersController < ApplicationController
 
   def show
     @attendance = Attendance.new
+    # Only load today's attendance data of @user
+    @attendances = @user.attendances.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
   end
 
   def edit

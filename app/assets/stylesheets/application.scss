@@ -1,6 +1,7 @@
 @import "bootstrap";
 
-.header {
+.header,
+.main-text {
   text-align: center;
 }
 
@@ -19,4 +20,8 @@
 .btn.btn-danger {
   width: 100%;
   margin-top: 15px;
+}
+
+.main-text {
+  font-size: 16px;
 }
