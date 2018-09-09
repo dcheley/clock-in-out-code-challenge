@@ -1,5 +1,7 @@
 <h1 class="header"><%= @user.name %>'s Profile</h1>
 
+<!-- Put live clock here -->
+
 <%= form_for([@user, @attendance]) do |f| %>
   <% if @attendance.errors.any? %>
     <div id="error_explanation">
@@ -11,9 +13,7 @@
       </ul>
     </div>
   <% end %>
-
-  <!-- Put live clock here -->
-
+  
   <!-- Display clock in OR clock out button based on user's last time -->
   <% if @user.attendances.empty? %>
     <%= f.hidden_field :status, value: 1 %>
@@ -25,7 +25,6 @@
     <p class="main-text">Time submitted, please contact Admin if data is incorrect</p>
   <% end %>
   <%= f.hidden_field :user_id, value: @user.id %>
-
 <% end %>
 
 <!-- Display user's attendance here -->

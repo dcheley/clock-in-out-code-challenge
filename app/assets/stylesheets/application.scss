@@ -1,5 +1,9 @@
 @import "bootstrap";
 
+.nav-item:hover {
+  background-color: darkgrey;
+}
+
 .header,
 .main-text {
   text-align: center;
