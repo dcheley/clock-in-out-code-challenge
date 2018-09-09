@@ -18,7 +18,7 @@ class AttendancesController < ApplicationController
   def update
     respond_to do |format|
       if @attendance.update_attributes(attendance_params)
-        format.html { redirect_to user_url(@user), notice: "Attendance updated" }
+        format.html { redirect_to user_urls, notice: "Attendance updated" }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render "users/index" }

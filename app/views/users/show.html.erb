@@ -1,4 +1,4 @@
-<h1 class="header"><%= @user.name %>'s Profile</h1>
+<h1 class="header"><%= @user.name.titleize %>'s Profile</h1>
 
 <!-- Put live clock here -->
 
@@ -13,7 +13,7 @@
       </ul>
     </div>
   <% end %>
-  
+
   <!-- Display clock in OR clock out button based on user's last time -->
   <% if @user.attendances.empty? %>
     <%= f.hidden_field :status, value: 1 %>
@@ -28,3 +28,6 @@
 <% end %>
 
 <!-- Display user's attendance here -->
+<h1 class="header">Weekly Attendance</h1>
+<%= image_tag "blue-clock.svg", class:"clock-icon" %>
+<%= image_tag "red-clock.svg", class:"clock-icon" %>
