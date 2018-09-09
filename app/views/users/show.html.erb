@@ -28,6 +28,29 @@
 <% end %>
 
 <!-- Display user's attendance here -->
-<h1 class="header">Weekly Attendance</h1>
-<%= image_tag "blue-clock.svg", class:"clock-icon" %>
-<%= image_tag "red-clock.svg", class:"clock-icon" %>
+<h4 class="header" id="sub-header">Weekly Attendance</h4>
+<div class="row">
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <div class="full-width" style="margin-top: 25px;">
+      <%= image_tag "blue-clock.svg", class:"clock-icon" %>
+    </div>
+    <div class="full-width">
+      <%= image_tag "red-clock.svg", class:"clock-icon" %>
+    </div>
+  </div>
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <p>Monday</p>
+  </div>
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <p>Tuesday</p>
+  </div>
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <p>Wednesday</p>
+  </div>
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <p>Thursday</p>
+  </div>
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <p>Friday</p>
+  </div>
+</div>

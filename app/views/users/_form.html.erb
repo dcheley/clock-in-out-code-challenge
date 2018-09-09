@@ -1,34 +1,38 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h5><%= pluralize(@user.errors.count, "error") %> prohibited change!</h5>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+    <%= form_for(@user) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h5><%= pluralize(@user.errors.count, "error") %> prohibited change!</h5>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control", required: true, placeholder: "Enter name..." %>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control", required: true, placeholder: "Enter name..." %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control", required: true, placeholder: "example@email.ca" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control", required: true, placeholder: "Enter password..." %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: "form-control", required: true, placeholder: "Re-enter password here..." %>
+      </div>
+
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, class: "form-control", required: true, placeholder: "example@email.ca" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control", required: true, placeholder: "Enter password..." %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, class: "form-control", required: true, placeholder: "Re-enter password here..." %>
-  </div>
-
-  <%= f.submit "Submit", class: "btn btn-primary" %>
-<% end %>
+</div>

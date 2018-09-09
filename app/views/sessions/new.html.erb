@@ -1,17 +1,21 @@
-<h1 class="header">Log in</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+    <h1 class="header">Log in</h1>
 
-<%= form_tag login_url do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= email_field_tag :email, params[:email], class: "form-control", required: true, placeholder: "example@email.ca" %>
+    <%= form_tag login_url do %>
+      <div class="field">
+        <%= label_tag :email %>
+        <%= email_field_tag :email, params[:email], class: "form-control", required: true, placeholder: "example@email.ca" %>
+      </div>
+
+      <div class="field">
+        <%= label_tag :password %>
+        <%= password_field_tag :password, nil, class: "form-control", required: true, placeholder: "Enter password here..." %>
+      </div>
+
+      <%= submit_tag "Submit", class: "btn btn-primary" %>
+    <% end %>
+
+    <p>New User? <%= link_to "Sign up", new_user_url, class:"link" %></p>
   </div>
-
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password, nil, class: "form-control", required: true, placeholder: "Enter password here..." %>
-  </div>
-
-  <%= submit_tag "Submit", class: "btn btn-primary" %>
-<% end %>
-
-<p>New User? <%= link_to "Sign up", new_user_url, class:"link" %></p>
+</div>
