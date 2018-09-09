@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @attendance = Attendance.new
   end
 
   def edit
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
 
   private
   def load_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:id] || current_user.id)  
   end
 
   def user_params

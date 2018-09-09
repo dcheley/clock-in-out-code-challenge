@@ -12,17 +12,17 @@
 
   <div class="field">
     <%= f.label :email %>
-    <%= f.email_field :email, class: "form-control", required: true %>
+    <%= f.email_field :email, class: "form-control", required: true, placeholder: "example@email.ca" %>
   </div>
 
   <div class="field">
     <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control", required: true %>
+    <%= f.password_field :password, class: "form-control", required: true, placeholder: "Enter password here..." %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, class: "form-control", required: true %>
+    <%= f.password_field :password_confirmation, class: "form-control", required: true, placeholder: "Re-enter password here..." %>
   </div>
 
   <%= f.submit "Submit", class: "btn btn-primary" %>

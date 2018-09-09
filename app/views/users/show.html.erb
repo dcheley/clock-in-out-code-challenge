@@ -1,1 +1,26 @@
 <h1 class="header">Profile</h1>
+
+<%= form_for([@user, @attendance]) do |f| %>
+  <% if @attendance.errors.any? %>
+    <div id="error_explanation">
+      <h5><%= pluralize(@attendance.errors.count, "error") %> prohibited change!</h5>
+      <ul>
+        <% @attendance.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_time %>
+    <%= f.datetime_field :start_time, class: "form-control", required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_time %>
+    <%= f.datetime_field :start_time, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
