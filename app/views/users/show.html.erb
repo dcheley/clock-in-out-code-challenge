@@ -1,4 +1,4 @@
-<h1 class="header">Profile</h1>
+<h1 class="header"><%= @user.name %>'s Profile</h1>
 
 <%= form_for([@user, @attendance]) do |f| %>
   <% if @attendance.errors.any? %>

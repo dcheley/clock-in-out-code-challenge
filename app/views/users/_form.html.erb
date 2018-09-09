@@ -11,13 +11,18 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", required: true, placeholder: "Enter name..." %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %>
     <%= f.email_field :email, class: "form-control", required: true, placeholder: "example@email.ca" %>
   </div>
 
   <div class="field">
     <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control", required: true, placeholder: "Enter password here..." %>
+    <%= f.password_field :password, class: "form-control", required: true, placeholder: "Enter password..." %>
   </div>
 
   <div class="field">
