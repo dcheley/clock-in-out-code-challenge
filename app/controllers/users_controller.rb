@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     @attendance = Attendance.new
     # Only load today's attendance data of @user
     @attendances = @user.attendances.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+    # Pull this week's dates into array for view
+    today = Date.today
+    @days_this_week = (today.at_beginning_of_week..today.at_end_of_week).map
+    @weekly_attendance = @user.attendances.where(created_at: today.at_beginning_of_week..today.at_end_of_week)
   end
 
   def edit

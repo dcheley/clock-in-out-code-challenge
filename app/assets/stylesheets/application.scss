@@ -37,6 +37,7 @@
 }
 
 .clock-icon {
+  position: relative;
   width: 32px;
   margin-top: 5px;
 }
@@ -48,4 +49,28 @@
 
 .full-width {
   width: 100%;
+}
+
+.clock-in {
+  position: absolute;
+  top: 37px;
+  left: 53px;
+  color: #337ab7;
+}
+
+.clock-out {
+  position: absolute;
+  top: 73px;
+  left: 53px;
+  color: #d9534f;
+}
+
+.time-in {
+  color: #337ab7;
+  margin-top: 15px;
+}
+
+.time-out {
+  color: #d9534f;
+  margin-top: 15px;
 }

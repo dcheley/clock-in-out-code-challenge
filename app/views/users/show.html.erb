@@ -22,35 +22,37 @@
     <%= f.hidden_field :status, value: 2 %>
     <%= f.submit "Clock Out", class: "btn btn-danger" %>
   <% else %>
-    <p class="main-text">Time submitted, please contact Admin if data is incorrect</p>
+    <p class="main-text">Time submitted for today, please contact admin if data is incorrect</p>
   <% end %>
   <%= f.hidden_field :user_id, value: @user.id %>
 <% end %>
 
-<!-- Display user's attendance here -->
+<!-- Display user's attendance over past week -->
 <h4 class="header" id="sub-header">Weekly Attendance</h4>
 <div class="row">
   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
     <div class="full-width" style="margin-top: 25px;">
       <%= image_tag "blue-clock.svg", class:"clock-icon" %>
+      <p class="clock-in">IN</p>
     </div>
     <div class="full-width">
       <%= image_tag "red-clock.svg", class:"clock-icon" %>
+      <p class="clock-out">OUT</p>
     </div>
   </div>
-  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <p>Monday</p>
-  </div>
-  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <p>Tuesday</p>
-  </div>
-  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <p>Wednesday</p>
-  </div>
-  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <p>Thursday</p>
-  </div>
-  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <p>Friday</p>
-  </div>
+  <!-- Generate weekly view including clock in/out times -->
+  <% @days_this_week.take(5).each do |day| %>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <%= day.strftime('%A') %>
+      <!-- Check whether a user has an attendance record within the day -->
+      <% @weekly_attendance.each do |clock_time| %>
+        <% if clock_time.created_at.to_date == day %>
+          <!-- CSS class is based on attendance status (in or out) -->
+          <p class="<%= clock_time.status == 1 ? 'time-in' : 'time-out' %>">
+            <%= clock_time.created_at.strftime('%H:%M') %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
