@@ -9,10 +9,11 @@
   4) bcrypt (To encrypt user passwords)
 
 * Features:
-  - User Authentication/Authorization
+  - User Authentication/Authorization with encrypted password
   - Ability to clock in and out once per day
-  - Dynamic front-end (updates along with back-end)
+  - Dynamic front-end with JSON requests
   - Attendance history view including Edit & Delete CRUD routes
+  - Client side form input validations
 
 * Setup - CLI:
   1) Clone repo
@@ -24,4 +25,8 @@
   5) Open browser and enter 'localhost:3000' in the url bar to load the app!
 
 * Summary
-I tried to use as few gems as possible, along with a simple user experience and clean design. 
+I tried to use as few gems as possible, along with a simple user experience and clean design.  
+
+The database seeds include one user along with a week's worth of attendance info (in /db/seeds.rb) to display the weekly attendance section (in users#show).
+
+All functional testing was done manually within the console. I also conducted end to end testing with all features.
