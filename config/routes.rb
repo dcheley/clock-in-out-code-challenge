@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy', as: :logout
   get 'users/display_time'
-  
+
   resources :users, only: [:new, :create, :show, :edit, :update]
-  resources :attendances, only: [:index]
+  resources :attendances, only: [:index, :edit, :update]
 
   resources :users do
-    resources :attendances, only: [:create, :update, :destroy]
+    resources :attendances, only: [:create, :destroy]
   end
 end

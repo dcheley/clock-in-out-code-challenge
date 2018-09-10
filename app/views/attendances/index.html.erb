@@ -4,7 +4,7 @@
     <% @attendances.each do |clock_time| %>
       <!-- CSS class is based on attendance status (in or out) -->
       <p class="<%= clock_time.status == 1 ? 'time-in' : 'time-out' %>" id="main-text">
-        <%= clock_time.created_at.strftime('%D -- %H:%M') %>
+        <%= clock_time.created_at.strftime('%D -- %H:%M') %> | <%= link_to "Edit", edit_attendance_url(clock_time) %>
       </p>
     <% end %>
   </div>

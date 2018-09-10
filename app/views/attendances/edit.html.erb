@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+    <%= form_for(@attendance) do |f| %>
+      <% if @attendance.errors.any? %>
+        <div id="error_explanation">
+          <h5><%= pluralize(@attendance.errors.count, "error") %> prohibited change!</h5>
+          <ul>
+            <% @attendance.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :status, "1 = Clock In / 2 = Clock Out" %>
+        <%= f.number_field :status, class: "form-control", required: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :time %>
+        <%= f.datetime_field :created_at, class: "form-control", required: true %>
+      </div>
+
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -15,22 +15,22 @@ class AttendancesController < ApplicationController
     end
   end
 
+  def edit
+    @attendance = Attendance.find(params[:id])
+  end
+
   def update
-    respond_to do |format|
-      if @attendance.update_attributes(attendance_params)
-        format.html { redirect_to attendances_urls, notice: "Attendance updated" }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render :index }
-        format.json { render json: @attendance.errors, status: :unprocessable_entity }
-      end
+    if @attendance.update_attributes(attendance_params)
+      redirect_to attendances_url, notice: "Attendance info updated"
+    else
+      render :edit
     end
   end
 
   def destroy
     respond_to do |format|
       @attendance.destroy
-      format.html { redirect_to attendances_url, notice: "Attendance data deleted" }
+      format.html { redirect_to attendances_url, notice: "Attendance info deleted" }
       format.json { render json: @user, status: :created, location: @user }
     end
   end
@@ -46,6 +46,6 @@ class AttendancesController < ApplicationController
   end
 
   def attendance_params
-    params.require(:attendance).permit(:status, :user_id)
+    params.require(:attendance).permit(:status, :user_id, :created_at)
   end
 end

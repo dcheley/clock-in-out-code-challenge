@@ -4,7 +4,6 @@
  <%= render partial: "time" %>
 </div>
 
-<div id="clock"></div>
 <%= form_for([@user, @attendance]) do |f| %>
   <% if @attendance.errors.any? %>
     <div id="error_explanation">
