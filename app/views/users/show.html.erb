@@ -1,7 +1,10 @@
 <h1 class="header"><%= @user.name.titleize %>'s Profile</h1>
 
-<!-- Put live clock here -->
+<div class="clock">
+ <%= render partial: "time" %>
+</div>
 
+<div id="clock"></div>
 <%= form_for([@user, @attendance]) do |f| %>
   <% if @attendance.errors.any? %>
     <div id="error_explanation">

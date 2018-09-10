@@ -37,6 +37,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def display_time
+    @time = Time.now.strftime("%H:%M:%S ")
+    render partial: "time"
+  end
+
   private
   def load_user
     @user = User.find(params[:id] || current_user.id)

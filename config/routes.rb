@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new', as: :login
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy', as: :logout
-
+  get 'users/display_time'
+  
   resources :users, only: [:new, :create, :show, :edit, :update]
   resources :attendances, only: [:index]
 
