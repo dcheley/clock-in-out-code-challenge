@@ -18,10 +18,10 @@ class AttendancesController < ApplicationController
   def update
     respond_to do |format|
       if @attendance.update_attributes(attendance_params)
-        format.html { redirect_to user_urls, notice: "Attendance updated" }
+        format.html { redirect_to attendances_urls, notice: "Attendance updated" }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render "users/index" }
+        format.html { render :index }
         format.json { render json: @attendance.errors, status: :unprocessable_entity }
       end
     end
@@ -30,13 +30,13 @@ class AttendancesController < ApplicationController
   def destroy
     respond_to do |format|
       @attendance.destroy
-      format.html { redirect_to users_url, notice: "Attendance data deleted" }
+      format.html { redirect_to attendances_url, notice: "Attendance data deleted" }
       format.json { render json: @user, status: :created, location: @user }
     end
   end
 
   def index
-    @attendances = Attendance.all.order("created_at DESC")
+    @attendances = Attendance.where(user_id: current_user.id).order("created_at ASC")
   end
 
   private

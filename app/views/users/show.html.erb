@@ -17,12 +17,12 @@
   <!-- Display clock in OR clock out button based on user's last time -->
   <% if @user.attendances.empty? %>
     <%= f.hidden_field :status, value: 1 %>
-    <%= f.submit "Clock In", class: "btn btn-primary" %>
+    <%= f.submit "Clock In", class: "btn btn-primary", id: "clock-button" %>
   <% elsif @user.attendances.last.status == 1 %>
     <%= f.hidden_field :status, value: 2 %>
-    <%= f.submit "Clock Out", class: "btn btn-danger" %>
+    <%= f.submit "Clock Out", class: "btn btn-danger", id: "clock-button" %>
   <% else %>
-    <p class="main-text">Time submitted for today, please contact admin if data is incorrect</p>
+    <p id="main-text">Time submitted for today, please contact admin if data is incorrect</p>
   <% end %>
   <%= f.hidden_field :user_id, value: @user.id %>
 <% end %>
