@@ -22,6 +22,11 @@ datetime_8 = day_4 + time_2
 datetime_9 = day_5 + time_1
 datetime_10 = day_5 + time_2
 
+# Seed example user
+User.create([
+  { name:'Ian', email:'fake@email.com', password:'Testing#1' }
+])
+
 # Seeds to test weekly attendance within view
 Attendance.create([
   { created_at: datetime_1, status: 1, user_id: 1 },
@@ -34,9 +39,4 @@ Attendance.create([
   { created_at: datetime_8, status: 2, user_id: 1 },
   { created_at: datetime_9, status: 1, user_id: 1 },
   { created_at: datetime_10, status: 2, user_id: 1 }
-])
-
-# Seed example user
-User.create([
-  { name:'Ian', email:'fake@email.com', password:'Testing#1' }
 ])

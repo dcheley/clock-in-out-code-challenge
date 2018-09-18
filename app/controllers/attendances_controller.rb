@@ -1,6 +1,6 @@
 class AttendancesController < ApplicationController
   before_action :load_attendance_data, only: [:update, :destroy]
-  # Only admins can view index, edit and destroy..
+
   def create
     @attendance = Attendance.new(attendance_params)
     @user = @attendance.user
