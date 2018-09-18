@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def display_time
     @time = Time.now.strftime("%H:%M:%S ")
-    render partial: "time"
+    render partial: "shared/time"
   end
 
   private
