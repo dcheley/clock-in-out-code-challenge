@@ -6,7 +6,6 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.new(attendance_params)
     respond_to do |format|
       if @attendance.save
-        @attendance.update_attributes(date_created: @attendance.created_at.to_date)
         format.html { redirect_to user_url(@user), notice: "Time successfully logged" }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -22,7 +21,7 @@ class AttendancesController < ApplicationController
 
   def update
     if @attendance.update_attributes(attendance_params)
-      @attendance.update_attributes(date_created: @attendance.created_at.to_date)
+      params[:date_created] = @attendance.created_at.to_date
       redirect_to attendances_url, notice: "Attendance info updated"
     else
       render :edit
@@ -44,7 +43,7 @@ class AttendancesController < ApplicationController
   private
   def load_attendance_data
     @attendance = Attendance.find(params[:id])
-    @user = @attendance.user
+    @user = current_user
   end
 
   def load_weekly_data
